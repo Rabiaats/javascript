@@ -24,6 +24,7 @@ eventArr.forEach(item => {
 //  button array
 const buttons = document.querySelectorAll("button");
 buttons[5].classList.add("enter");
+buttons[5].textContent = "enter";
 
 // random color
 function random(count){
