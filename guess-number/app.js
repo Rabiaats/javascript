@@ -121,7 +121,7 @@ function game(){
 
         if (score - wrongGuesses == 0){
             // Tüm adam çizildi, oyun bitti
-            message.textContent = "Game over ";
+            message.textContent = "Game over. The man is dead ☠️";
             scoreSpan.textContent = 0;
             checkBtn.disabled = true;
             result.textContent = random;
