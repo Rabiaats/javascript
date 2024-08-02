@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+*{
+    font-family: "Audiowide", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+body{
+    min-height: 100vh;
+    max-width: 100%;
+    /* text-shadow: 1px 1px 1px yellow; */
+    
+    text-shadow: 1px 1px 2px yellow, 
+               0 0 10px  rgb(209, 148, 15), 
+               0 0 1px  rgb(209, 148, 61);
+    background: linear-gradient(to right , rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./img/back7.jpg);
+    background-repeat : no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.out{
+    padding: 0 3rem;
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+}
+
+.input{
+    position: relative;
+}
+
+img{
+    position: absolute;
+    width: 80px;
+    animation: turn 1.2s linear infinite;
+    top: 25px;
+}
+
+@keyframes turn{
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+h4{
+    display: none;
+}
+
+p[style="color: yellow;"]{
+    display: none;
+}
+
+input, select{
+    outline: none !important;
+}
+
+input{
+    border: 1px ridge white;
+    width: 150px !important;
+    height: 130px !important;
+}
+
+input:focus, select:focus {
+    outline: none !important;
+    box-shadow: 0 0 5px 1px yellow !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input::placeholder{
+    color: #FFCA2C !important;
+}
+
+canvas{
+    box-shadow: 0 0 50px 1px rgba(255, 255, 0, 0.301);
+    background-color: rgba(238, 216, 207, 0.4);
+}
+
+@keyframes result {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+        color: red;
+    }
+}
+
+.scale-animation {
+    animation: result .5s linear alternate infinite;
+}
+
+@media screen and (max-width: 770px) {
+    .out{
+        padding: 1rem;
+        padding-top: 2rem;
+    }
+}
