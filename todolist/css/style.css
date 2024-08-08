@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap');
+
+*{
+    font-family: "PT Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+body{
+    min-height: 100vh;
+    background-image: url(../img/background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* object-fit: cover; */
+}
+
+.add{
+    background-color: white;
+    outline: none !important;
+    transition: all .8s;
+}
+
+.add:hover{
+    background-color: inherit;
+    border: 2px solid white !important;
+    color: white;
+    transform: scale(1.1);
+}
+
+.whole{
+    border-radius: 1rem;
+    box-shadow: 1px 1px 10px 10px #FCFEFB;
+}
+
+.bottom{
+    padding-bottom: 0 !important;
+}
+
+.list-group{
+    overflow: auto;
+}
+
+.list-group::-webkit-scrollbar{
+    background-color: inherit;
+}
+
+.weekday{
+    background-color: #94522a;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.weekend{
+    background-color: #CE9979;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+li{
+    cursor: pointer;
+    border: none !important;
+    border-bottom: 1px solid gray !important;
+}
+
+li p{
+    font-size: 1.2rem;
+}
+
+.click{
+    opacity: 0.5;
+    color: green;
+}
+
+.row{
+    padding-bottom: 0 !important; 
+}
+
+.delete-btn{
+    background-color: rgb(255, 65, 65);
+    color: white;
+}
+
+.delete-btn:hover{
+    color:  rgb(255, 65, 65);
+    background-color: white;
+    border: 1px solid  rgb(255, 65, 65);
+}
+
+
+@media screen and (min-width: 1000px) {
+    .container-fluid{
+        width: 900px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .whole{
+        box-shadow: none;
+    }
+}
