@@ -9,7 +9,6 @@ window.onload = () => {
     displayList();    
 }
 
-
 // ilk olarak ekrana yazdır
 function displayList(){
     if(arrList.length){
@@ -50,10 +49,14 @@ function displayList(){
     } else {
         document.querySelector(".bottom").style.display = "none";
     }
+
     updateLocalStorage();
+    
     clickLi();
+    
+    // li ye cift tikla, edit
     document.querySelectorAll("li").forEach((li) => {
-        li.addEventListener("dblclick", () => myFunction(li));
+        li.addEventListener("dblclick", () => edit(li));
     })
 }
 
@@ -79,85 +82,18 @@ function addTask(){
 
 // deleteyi yap
 function deleteTask(index){
-    arrList.splice(index,1) //!belirttiğimiz indextekini silecek // farkli nasil yapilir
-    displayList(); //?kitapların güncel halini tekrar ekrana basacak
+    arrList.splice(index,1)
+    displayList();
 }
 
-// duzenleyi yap
-
-// locale ekle
-function updateLocalStorage(){
-    localStorage.setItem("arrList", JSON.stringify(arrList));
-}
-
-//locali cagir
-function callLocal() {
-    return JSON.parse(localStorage.getItem("arrList")) || [];
-}
-
-// delete tusu
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Delete") {
-        const clickedItems = document.querySelectorAll(".click");
-        if (clickedItems.length && confirm("İşaretlediklerinizi silmek istiyor musunuz?")) {
-            arrList = arrList.filter((item, index) => !clickedItems[index].classList.contains("click"));
-            displayList();
-        }
-    }
-});
-
+// enter ile add
 document.addEventListener("keydown", (e) => {
     if (e.key === "Enter"){
         addTask();
     }
 })
 
-// edit
-function myFunction(myItem){
-    const currentElement = myItem.querySelector("p")
-
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.style.width = "650px";
-    input.className = "form-control h-100 border-1 outline-0 me-2 mt-3 f-4";
-    input.value = currentElement.textContent;
-
-    myItem.replaceChild(input, currentElement);
-    
-    input.focus();
-
-    input.addEventListener("blur", () =>{
-        if(!(input.value == "")) {
-            currentElement.textContent = input.value;
-            myItem.replaceChild(currentElement, input);
-        
-            arrList.map((item, index, arrList) => {
-                if(item.id == myItem.id){
-                    arrList[index].task = input.value;
-                }
-            })
-            displayList();
-        }
-    })
-
-    document.onkeydown = (e) => {
-        if (e.key == "Enter"){
-            if(!(input.value == "")) {
-                currentElement.textContent = input.value;
-                myItem.replaceChild(currentElement, input);
-                
-                arrList.map((item, index, arrList) => {
-                    if(item.id == myItem.id){
-                        arrList[index].task = input.value;
-                    }
-                })
-                displayList();
-            }
-        }
-    }
-}
-
-// yapildi
+// click olarak işaretle
 function clickLi(){
     document.querySelectorAll(".okey").forEach((item) => {
         const parent = item.parentElement;
@@ -178,10 +114,69 @@ function clickLi(){
     })
 }
 
+// delete tusu ile click olanlari sil
 document.addEventListener("keydown", (e) => {
-    if(e.key == "Delete"){
+    if(e.key == "Delete" && confirm("İşaretlediklerinizi silmek istiyor musunuz?")){
         arrList = arrList.filter((item) => item.click == false)
         updateLocalStorage();
         displayList();
     }
 })
+
+
+// edit
+function edit(myItem){
+    const currentElement = myItem.querySelector("p")
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.style.width = "650px";
+    input.className = "form-control h-100 border-1 outline-0 me-2 mt-3 f-4";
+    input.value = currentElement.textContent;
+
+    myItem.replaceChild(input, currentElement);
+    
+    input.focus();
+
+    // input a focus bitince editle
+    input.addEventListener("blur", () =>{
+        if(!(input.value == "")) {
+            currentElement.textContent = input.value;
+            myItem.replaceChild(currentElement, input);
+        
+            arrList.map((item, index, arrList) => {
+                if(item.id == myItem.id){
+                    arrList[index].task = input.value;
+                }
+            })
+            displayList();
+        }
+    })
+
+    // enter a basilinca editle
+    document.onkeydown = (e) => {
+        if (e.key == "Enter"){
+            if(!(input.value == "")) {
+                currentElement.textContent = input.value;
+                myItem.replaceChild(currentElement, input);
+                
+                arrList.map((item, index, arrList) => {
+                    if(item.id == myItem.id){
+                        arrList[index].task = input.value;
+                    }
+                })
+                displayList();
+            }
+        }
+    }
+}
+
+// locale ekle
+function updateLocalStorage(){
+    localStorage.setItem("arrList", JSON.stringify(arrList));
+}
+
+//locali cagir
+function callLocal() {
+    return JSON.parse(localStorage.getItem("arrList")) || [];
+}
