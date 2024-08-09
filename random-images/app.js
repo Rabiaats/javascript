@@ -22,7 +22,6 @@ setInterval(outputDate, 1000);
 /* ---------------------------------- */
 setTimeout(() => {
   loadingDiv.style.display = "none";
-  document.querySelector("body").style.backgroundColor = "rgb(241, 209, 214)";
   containerDiv.classList.remove("d-none");
   containerDiv.classList.add("d-flex");
   dataPull();
