@@ -1,0 +1,13 @@
+body{
+    min-height: 100vh;
+    max-width: 100%;
+}
+
+.img{
+    background-image: url(./img/loading-img.gif);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100% !important;
+    width: 100% !important;
+}
